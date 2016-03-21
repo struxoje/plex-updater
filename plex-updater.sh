@@ -9,6 +9,8 @@ LATEST_VER="$(curl https://plex.tv/downloads | grep -Po '(?<=plexmediaserver_).*
 INSTALL_FILE="plexmediaserver_"$LATEST_VER"_amd64.deb"
 INSTALL_FOLDER="/srv/scripts/"
 
+echo "Starting plex updater: $(date)"
+
 # Instead of checking all subversions, assumption here is simple, if there is a version mistmatch get and install new version
 if [ "$INSTALLED_VER" != "$LATEST_VER" ]
 then
@@ -18,4 +20,6 @@ wget -P $INSTALL_FOLDER 'https://downloads.plex.tv/plex-media-server/'$LATEST_VE
 dpkg -i $INSTALL_FOLDER$INSTALL_FILE
 # Remove installation file
 rm $INSTALL_FOLDER$INSTALL_FILE
+else
+echo "You already have latest version: "$INSTALLED_VER
 fi
