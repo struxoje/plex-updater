@@ -5,7 +5,7 @@
 # License: Apache License 2.0 - http://www.apache.org/licenses/
 
 INSTALLED_VER="$(apt-cache show plexmediaserver | awk '/Version/ {print $2}')"
-LATEST_VER="$(curl https://plex.tv/downloads | grep -Po '(?<=plexmediaserver_).*?(?=_amd64\.deb)')"
+LATEST_VER="$(curl -s https://plex.tv/downloads | grep -Po '(?<=plexmediaserver_).*?(?=_amd64\.deb)')"
 INSTALL_FILE="plexmediaserver_"$LATEST_VER"_amd64.deb"
 INSTALL_FOLDER="/srv/scripts/"
 
