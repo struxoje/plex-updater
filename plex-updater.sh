@@ -1,6 +1,4 @@
 #!/bin/bash
-# Author: Adnan Strujic
-# Email: astrujic@gmail.com
 # Date: August 2018
 # License: Apache License 2.0 - http://www.apache.org/licenses/
 
