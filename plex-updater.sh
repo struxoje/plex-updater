@@ -1,11 +1,11 @@
 #!/bin/bash
-# Date: August 2018
+# Date: August 2021
 # License: Apache License 2.0 - http://www.apache.org/licenses/
 
 INSTALLED_VER="$(apt-cache show plexmediaserver | awk '/Version/ {print $2}')"
-LATEST_VER="$(curl -s https://plex.tv/api/downloads/1.json | grep -Po '(?<=plexmediaserver_).{10,30}(?=_amd64\.deb)')"
+LATEST_VER="$(curl -s https://plex.tv/api/downloads/5.json | jq -r '.computer.Linux.version')"
 INSTALL_FILE="plexmediaserver_"$LATEST_VER"_amd64.deb"
-INSTALL_FOLDER="/srv/scripts/"
+INSTALL_FOLDER="/srv/"
 
 echo "Starting plex updater: $(date)"
 
@@ -13,7 +13,7 @@ echo "Starting plex updater: $(date)"
 if [ "$INSTALLED_VER" != "$LATEST_VER" ]
 then
 # Download new version
-wget -P $INSTALL_FOLDER 'https://downloads.plex.tv/plex-media-server/'$LATEST_VER'/'$INSTALL_FILE
+wget -P $INSTALL_FOLDER 'https://downloads.plex.tv/plex-media-server-new/'$LATEST_VER'/debian/'$INSTALL_FILE
 
 # Install new version
 dpkg -i $INSTALL_FOLDER$INSTALL_FILE
