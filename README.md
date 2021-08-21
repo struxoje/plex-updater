@@ -1,5 +1,5 @@
 # plex-updater
-Simple Plex Media Server Auto updater for Ubuntu64
+Simple Plex Media Server Auto updater for Debian64
 
 Script works as follows:
 - Checks currently installed and latest version available on [plex site](https://plex.tv/pms/downloads/5.json)
